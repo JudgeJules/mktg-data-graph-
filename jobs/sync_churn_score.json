@@ -1,0 +1,22 @@
+{
+"name": "sync\_churn\_score",
+"source": {
+"type": "redshift",
+"connection": "redshift-analytics"
+},
+"destination": {
+"type": "segment\_profiles",
+"spaceId": "\${SEGMENT\_SPACE\_ID}"
+},
+"runFrequency": "30m",
+"primaryKey": "user\_id",
+"query": "SELECT user\_id, churn\_score FROM analytics.user\_churn\_scores WHERE updated\_at >= NOW() - INTERVAL '1 hour'",
+"columnMappings": {
+"user\_id": "userId",
+"churn\_score": "traits.churn\_score"
+},
+"onFailure": {
+"action": "SLACK\_ALERT",
+"channel": "#data-pipelines"
+}
+}
