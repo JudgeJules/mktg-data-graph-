@@ -1,0 +1,22 @@
+version: 2
+
+models:
+
+* name: users\_linked\_view
+  description: "Linked view for Segment Data Graph `users` collection"
+  columns:
+
+  * name: id
+    description: "Surrogate user\_id; primary key for the collection"
+    tests:
+
+    * not\_null
+    * unique
+  * name: email
+    tests:
+
+    * not\_null
+      tests:
+  * dbt\_expectations.expect\_table\_columns\_to\_match\_set:
+    name: users\_linked\_view\_has\_required\_columns
+    column\_list: \['id', 'email', 'created\_at', 'dbt\_updated\_at']
