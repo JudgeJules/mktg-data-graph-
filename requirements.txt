@@ -1,0 +1,28 @@
+# Python & CLI dependencies for mktg-data-graph
+
+# ------------------------------------------------
+
+# Pin versions to ensure CI parity across dev, staging, and prod.
+
+# --- dbt core + Redshift adapter ---
+
+dbt-core==1.8.1
+dbt-redshift==1.8.1
+
+# --- testing / expectations ---
+
+dbt-expectations==0.10.3
+
+# --- lint & development tooling ---
+
+sqlfluff==3.0.4
+pre-commit==3.7.1
+
+# --- YAML / JSON utilities ---
+
+pyyaml==6.0.1
+
+# --- AWS SDK & CLI for helper scripts ---
+
+boto3==1.34.119
+awscli==2.16.10
