@@ -1,0 +1,18 @@
+{
+"name": "mktg-data-graph",
+"version": "0.1.0",
+"private": true,
+"description": "Segment Data Graph & marketing ledger pipeline for Ramsey Solutions",
+"engines": {
+"node": ">=18.18.0"
+},
+"devDependencies": {
+"@stoplight/spectral-cli": "6.11.0",
+"segment-cli": "0.0.20"
+},
+"scripts": {
+"lint": "spectral lint \*\*/\*.{yml,yaml,json}",
+"deploy\:segment": "segment config apply --dir ./ --token \$SEGMENT\_TOKEN",
+"deploy\:reverse-etl": "segment reverse-etl apply --dir ./jobs --token \$SEGMENT\_TOKEN"
+}
+}
