@@ -1,0 +1,35 @@
+# Pre‑commit hooks for mktg-data-graph
+
+# Run `pre-commit install` after cloning the repo.
+
+repos:
+
+# SQL quality & style
+
+* repo: [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)
+  rev: 3.0.4
+  hooks:
+
+  * id: sqlfluff-lint
+    args: \[--dialect, redshift]
+
+# Basic whitespace hygiene
+
+* repo: [https://github.com/pre-commit/pre-commit-hooks](https://github.com/pre-commit/pre-commit-hooks)
+  rev: v4.6.0
+  hooks:
+
+  * id: end-of-file-fixer
+  * id: trailing-whitespace
+
+# YAML / JSON contract linting via Stoplight Spectral
+
+* repo: [https://github.com/stoplightio/spectral](https://github.com/stoplightio/spectral)
+  rev: v6.11.0
+  hooks:
+
+  * id: spectral-lint
+    name: spectral lint (yaml/json)
+    entry: npx spectral lint
+    language: node
+    types: \[yaml, json]
